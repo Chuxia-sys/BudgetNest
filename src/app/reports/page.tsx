@@ -182,12 +182,12 @@ export default function ReportsPage() {
   if (!user) return null;
 
   return (
-    <div className="container px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
+    <div className="container px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div className="text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl font-bold">Reports & Analytics</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">Track your spending patterns and insights</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Reports & Analytics</h1>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Track your spending patterns and insights</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <Select value={selectedMonth} onValueChange={setSelectedMonth}>
@@ -215,7 +215,7 @@ export default function ReportsPage() {
       </div>
 
       {/* Summary Stats */}
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Spent</CardTitle>

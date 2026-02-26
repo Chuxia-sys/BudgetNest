@@ -196,16 +196,16 @@ export default function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-6">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 max-w-6xl">
+        <div className="mb-6 sm:mb-8">
           <Link href="/">
-            <Button variant="ghost" size="sm" className="mb-4">
+            <Button variant="ghost" size="sm" className="mb-3 sm:mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Dashboard
             </Button>
           </Link>
-          <h1 className="text-3xl font-bold">Manage Categories</h1>
-          <p className="text-muted-foreground mt-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Manage Categories</h1>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1 sm:mt-2">
             Add, edit, and manage your expense categories
           </p>
         </div>
@@ -240,19 +240,19 @@ export default function CategoriesPage() {
                       Add Category
                     </Button>
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="max-w-[95vw] sm:max-w-md">
                     <DialogHeader>
-                      <DialogTitle>
+                      <DialogTitle className="text-lg sm:text-xl">
                         {editingCategory ? 'Edit Category' : 'Add New Category'}
                       </DialogTitle>
-                      <DialogDescription>
+                      <DialogDescription className="text-sm">
                         {editingCategory ? 'Update your category details' : 'Create a new expense category'}
                       </DialogDescription>
                     </DialogHeader>
                     <form onSubmit={handleSubmit}>
-                      <div className="space-y-4 py-4">
-                        <div className="space-y-2">
-                          <Label htmlFor="name">Category Name</Label>
+                      <div className="space-y-3 sm:space-y-4 py-3 sm:py-4">
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label htmlFor="name" className="text-sm">Category Name</Label>
                           <Input
                             id="name"
                             value={formData.name}
@@ -262,15 +262,15 @@ export default function CategoriesPage() {
                           />
                         </div>
 
-                        <div className="space-y-2">
-                          <Label>Color</Label>
-                          <div className="flex flex-wrap gap-2">
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label className="text-sm">Color</Label>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {PRESET_COLORS.map((color) => (
                               <button
                                 key={color}
                                 type="button"
                                 onClick={() => setFormData({ ...formData, color })}
-                                className={`w-8 h-8 rounded-full border-2 transition-all ${
+                                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border-2 transition-all ${
                                   formData.color === color ? 'border-primary scale-110' : 'border-transparent'
                                 }`}
                                 style={{ backgroundColor: color }}
@@ -279,9 +279,9 @@ export default function CategoriesPage() {
                           </div>
                         </div>
 
-                        <div className="space-y-2">
-                          <Label>Icon</Label>
-                          <div className="flex flex-wrap gap-2">
+                        <div className="space-y-1.5 sm:space-y-2">
+                          <Label className="text-sm">Icon</Label>
+                          <div className="flex flex-wrap gap-1.5 sm:gap-2">
                             {PRESET_ICONS.map((icon) => (
                               <button
                                 key={icon}
@@ -340,23 +340,23 @@ export default function CategoriesPage() {
                 </Button>
               </div>
             ) : (
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
                 {categories.map((category) => (
                   <Card
                     key={category.id}
-                    className="flex items-center justify-between p-4 hover:shadow-md transition-shadow"
+                    className="flex flex-col xs:flex-row items-start xs:items-center justify-between p-3 sm:p-4 hover:shadow-md transition-shadow gap-3 xs:gap-0"
                     style={{ borderLeft: `4px solid ${category.color}` }}
                   >
-                    <div className="flex items-center gap-3 flex-1 min-w-0">
-                      <span className="text-2xl flex-shrink-0">{category.icon}</span>
+                    <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                      <span className="text-xl sm:text-2xl flex-shrink-0">{category.icon}</span>
                       <div className="min-w-0">
-                        <p className="font-medium truncate">{category.name}</p>
+                        <p className="font-medium truncate text-sm sm:text-base">{category.name}</p>
                         {isDefaultCategory(category.id) && (
                           <p className="text-xs text-muted-foreground">Default Category</p>
                         )}
                       </div>
                     </div>
-                    <div className="flex gap-1 flex-shrink-0">
+                    <div className="flex gap-1 flex-shrink-0 w-full xs:w-auto justify-end">
                       {!isDefaultCategory(category.id) && (
                         <>
                           <Button

@@ -39,6 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+      </head>
       <body
         className={`${inter.variable} antialiased bg-background text-foreground min-h-screen flex flex-col font-sans`}
       >
@@ -51,7 +54,7 @@ export default function RootLayout({
           <AuthProvider>
             <GoogleAuthHandler />
             <Navigation />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 w-full">{children}</main>
             <Toaster />
           </AuthProvider>
         </ThemeProvider>

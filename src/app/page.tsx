@@ -135,12 +135,13 @@ export default function DashboardPage() {
   const categoryBreakdown = getCategoryBreakdown();
 
   return (
-    <div className="container px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
+    <div className="min-h-screen">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 py-6 md:py-8">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 md:mb-8">
         <div className="text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl font-bold">Dashboard</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">
+          <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold">Dashboard</h1>
+          <p className="text-sm md:text-base text-muted-foreground mt-1">
             Welcome back! Here's your financial overview for {format(new Date(), 'MMMM yyyy')}
           </p>
         </div>
@@ -162,58 +163,58 @@ export default function DashboardPage() {
       )}
 
       {/* Stats Cards */}
-      <div className="grid gap-3 sm:gap-4 grid-cols-2 lg:grid-cols-4">
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">This Month</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+      <div className="grid gap-4 md:gap-5 grid-cols-2 md:grid-cols-4 mb-6 md:mb-8">
+        <Card className="overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 md:px-5 lg:px-6 pt-4 md:pt-5 lg:pt-6">
+            <CardTitle className="text-xs md:text-sm font-medium">This Month</CardTitle>
+            <Calendar className="h-4 md:h-4.5 text-muted-foreground shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{currencySymbol}{thisMonthSpent.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">
+          <CardContent className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6">
+            <div className="text-xl md:text-2xl font-bold truncate">{currencySymbol}{thisMonthSpent.toFixed(2)}</div>
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">
               {expenses.filter(e => e.date.startsWith(new Date().toISOString().slice(0, 7))).length} transactions
             </p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
-            <Wallet className="h-4 w-4 text-muted-foreground" />
+        <Card className="overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 md:px-5 lg:px-6 pt-4 md:pt-5 lg:pt-6">
+            <CardTitle className="text-xs md:text-sm font-medium">Total Spent</CardTitle>
+            <Wallet className="h-4 md:h-4.5 text-muted-foreground shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{currencySymbol}{totalSpent.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">
+          <CardContent className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6">
+            <div className="text-xl md:text-2xl font-bold truncate">{currencySymbol}{totalSpent.toFixed(2)}</div>
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">
               All time
             </p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Monthly Limit</CardTitle>
-            <CircleDollarSign className="h-4 w-4 text-muted-foreground" />
+        <Card className="overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 md:px-5 lg:px-6 pt-4 md:pt-5 lg:pt-6">
+            <CardTitle className="text-xs md:text-sm font-medium">Monthly Limit</CardTitle>
+            <CircleDollarSign className="h-4 md:h-4.5 text-muted-foreground shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6">
+            <div className="text-xl md:text-2xl font-bold truncate">
               {currencySymbol}{settings?.spendingLimit?.toFixed(2) || '0.00'}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">
               {settings?.spendingLimit ? `${((thisMonthSpent / settings.spendingLimit) * 100).toFixed(0)}% used` : 'Not set'}
             </p>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Top Category</CardTitle>
-            <Receipt className="h-4 w-4 text-muted-foreground" />
+        <Card className="overflow-hidden">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 md:px-5 lg:px-6 pt-4 md:pt-5 lg:pt-6">
+            <CardTitle className="text-xs md:text-sm font-medium">Top Category</CardTitle>
+            <Receipt className="h-4 md:h-4.5 text-muted-foreground shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold capitalize">
+          <CardContent className="px-4 md:px-5 lg:px-6 pb-4 md:pb-5 lg:pb-6">
+            <div className="text-xl md:text-2xl font-bold capitalize">
               {categoryBreakdown[0]?.category || 'None'}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs md:text-sm text-muted-foreground mt-1">
               {currencySymbol}{categoryBreakdown[0]?.amount.toFixed(2) || '0.00'}
             </p>
           </CardContent>
@@ -221,14 +222,14 @@ export default function DashboardPage() {
       </div>
 
       {/* Charts and Recent Expenses */}
-      <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
+      <div className="grid gap-5 md:gap-6 grid-cols-1 md:grid-cols-2">
         {/* Category Breakdown */}
         <Card>
-          <CardHeader>
-            <CardTitle>Spending by Category</CardTitle>
-            <CardDescription>Your top spending categories this month</CardDescription>
+          <CardHeader className="px-5 md:px-6 pt-5 md:pt-6">
+            <CardTitle className="text-lg md:text-xl">Spending by Category</CardTitle>
+            <CardDescription className="text-sm">Your top spending categories this month</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-5 md:px-6 pb-5 md:pb-6">
             {categoryBreakdown.length > 0 ? (
               <div className="space-y-4">
                 {categoryBreakdown.map(({ category, amount }) => {
@@ -238,12 +239,12 @@ export default function DashboardPage() {
                     <div key={category} className="space-y-2">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <span className="text-lg">{cat?.icon || '📦'}</span>
-                          <span className="font-medium capitalize">{category}</span>
+                          <span className="text-xl md:text-2xl">{cat?.icon || '📦'}</span>
+                          <span className="font-medium capitalize text-sm md:text-base">{category}</span>
                         </div>
-                        <span className="font-semibold">{currencySymbol}{amount.toFixed(2)}</span>
+                        <span className="font-semibold text-sm md:text-base">{currencySymbol}{amount.toFixed(2)}</span>
                       </div>
-                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
+                      <div className="h-2 md:h-2.5 bg-secondary rounded-full overflow-hidden">
                         <div
                           className="h-full transition-all duration-300 rounded-full"
                           style={{
@@ -268,24 +269,24 @@ export default function DashboardPage() {
 
         {/* Recent Expenses */}
         <Card>
-          <CardHeader>
-            <CardTitle>Recent Expenses</CardTitle>
-            <CardDescription>Your latest transactions</CardDescription>
+          <CardHeader className="px-5 md:px-6 pt-5 md:pt-6">
+            <CardTitle className="text-lg md:text-xl">Recent Expenses</CardTitle>
+            <CardDescription className="text-sm">Your latest transactions</CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-5 md:px-6 pb-5 md:pb-6">
             {recentExpenses.length > 0 ? (
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {recentExpenses.map((expense) => {
                   const cat = categories.find(c => c.id === expense.category || c.name.toLowerCase() === expense.category.toLowerCase());
                   return (
                     <div
                       key={expense.id}
-                      className="flex items-center justify-between p-3 sm:p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors cursor-pointer"
+                      className="flex items-center justify-between p-3 sm:p-4 md:p-4 lg:p-5 xl:p-6 rounded-lg border bg-card hover:bg-accent/50 transition-colors cursor-pointer"
                       onClick={() => router.push(`/reports`)}
                     >
-                      <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                      <div className="flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 min-w-0 flex-1">
                         <div
-                          className="flex h-10 w-10 sm:h-10 sm:w-10 items-center justify-center rounded-full text-lg flex-shrink-0"
+                          className="flex h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 lg:h-12 lg:w-12 xl:h-14 xl:w-14 items-center justify-center rounded-full text-lg sm:text-xl md:text-xl lg:text-xl xl:text-2xl flex-shrink-0"
                           style={{ backgroundColor: cat?.color + '20' }}
                         >
                           {cat?.icon || '📦'}
@@ -333,6 +334,7 @@ export default function DashboardPage() {
             )}
           </CardContent>
         </Card>
+      </div>
       </div>
     </div>
   );

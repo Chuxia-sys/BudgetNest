@@ -109,11 +109,11 @@ export default function SettingsPage() {
   if (!user) return null;
 
   return (
-    <div className="container px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
+    <div className="container px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
       {/* Header */}
       <div className="text-center sm:text-left">
-        <h1 className="text-2xl sm:text-3xl font-bold">Settings</h1>
-        <p className="text-sm sm:text-base text-muted-foreground">Manage your account and preferences</p>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Settings</h1>
+        <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Manage your account and preferences</p>
       </div>
 
       {/* Budget Settings */}

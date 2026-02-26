@@ -11,8 +11,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Separator } from '@/components/ui/separator';
 import { toast } from '@/hooks/use-toast';
 import { Loader2, Mail, Lock, ArrowRight, Sparkles, ShieldCheck, TrendingUp, Target } from 'lucide-react';
-import { FirebaseStatus } from '@/components/FirebaseStatus';
-import { GoogleSignInDiagnostics } from '@/components/GoogleSignInDiagnostics';
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -84,51 +82,51 @@ export default function AuthPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950">
+    <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 dark:from-slate-950 dark:via-slate-900 dark:to-purple-950 px-4 sm:px-5 md:px-6 lg:px-8 py-6 sm:py-8 md:py-10 lg:py-12">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-pink-400/20 dark:bg-pink-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-400/10 dark:bg-blue-600/5 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] bg-purple-400/20 dark:bg-purple-600/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px] bg-pink-400/20 dark:bg-pink-600/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] bg-blue-400/10 dark:bg-blue-600/5 rounded-full blur-3xl" />
       </div>
 
       {/* Grid Pattern Overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-      <div className="relative w-full max-w-md px-4">
+      <div className="relative w-full max-w-md md:max-w-lg lg:max-w-lg xl:max-w-xl">
         {/* Logo and Title */}
-        <div className="text-center mb-8">
-          <div className="mx-auto mb-6 relative">
+        <div className="text-center mb-6 sm:mb-8 md:mb-9 lg:mb-10 xl:mb-12">
+          <div className="mx-auto mb-4 sm:mb-6 md:mb-7 lg:mb-8 relative inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-2xl blur-lg opacity-50 animate-pulse" />
-            <div className="relative h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex shadow-xl shadow-purple-500/25">
-              <Target className="h-8 w-8 text-white" />
+            <div className="relative h-14 w-14 sm:h-16 sm:w-16 md:h-18 md:w-18 lg:h-20 lg:w-20 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex shadow-xl shadow-purple-500/25">
+              <Target className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9 lg:h-10 lg:w-10 text-white" />
             </div>
-            <div className="absolute -top-1 -right-1 h-6 w-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
-              <Sparkles className="h-3 w-3 text-white" />
+            <div className="absolute -top-1 -right-1 h-6 w-6 sm:h-7 sm:w-7 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg">
+              <Sparkles className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-white" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent animate-gradient">
+          <h1 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent animate-gradient">
             Budget Nest
           </h1>
-          <p className="text-muted-foreground mt-3 text-lg">
+          <p className="text-muted-foreground mt-2 sm:mt-3 md:mt-3 lg:mt-4 text-sm sm:text-base md:text-lg lg:text-xl px-2">
             {isLogin ? 'Welcome back! Let\'s continue your journey' : 'Start managing your finances smarter today'}
           </p>
         </div>
 
         {/* Auth Card */}
-        <Card className="shadow-2xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl">
-          <CardHeader className="space-y-1">
-            <CardTitle className="text-2xl font-bold">
+        <Card className="shadow-2xl border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl overflow-hidden">
+          <CardHeader className="space-y-1 px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10 pt-5 sm:pt-6 md:pt-7 lg:pt-8 xl:pt-10">
+            <CardTitle className="text-xl sm:text-2xl md:text-2xl lg:text-3xl font-bold">
               {isLogin ? 'Sign in to your account' : 'Create your account'}
             </CardTitle>
-            <CardDescription className="text-base">
+            <CardDescription className="text-sm sm:text-base md:text-base lg:text-lg">
               {isLogin
                 ? 'Enter your credentials to access your dashboard'
                 : 'Fill in the details below to get started'}
             </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <form onSubmit={handleSubmit} className="space-y-5">
+          <CardContent className="space-y-5 sm:space-y-6 md:space-y-7 lg:space-y-8 px-5 sm:px-6 md:px-7 lg:px-8 xl:px-10 pb-5 sm:pb-6 md:pb-7 lg:pb-8 xl:pb-10">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-sm font-medium">Email Address</Label>
                 <div className="relative group">
@@ -257,12 +255,6 @@ export default function AuthPage() {
             <p className="text-xs font-medium text-muted-foreground">Secure Data</p>
           </div>
         </div>
-
-        {/* Firebase Connection Status */}
-        <FirebaseStatus />
-
-        {/* Google Sign-In Diagnostics */}
-        <GoogleSignInDiagnostics />
 
         {/* Footer */}
         <div className="mt-6 text-center text-xs text-muted-foreground">

@@ -129,11 +129,11 @@ export default function AddExpensePage() {
   const selectedCategoryObj = categories.find(c => c.id === selectedCategory);
 
   return (
-    <div className="container px-4 sm:px-6 py-6 sm:py-8">
+    <div className="container px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10">
       <div className="max-w-2xl mx-auto">
-        <div className="mb-6 sm:mb-8 text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl font-bold">Add Expense</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">Record a new expense to track your spending</p>
+        <div className="mb-6 sm:mb-8 md:mb-10 text-center sm:text-left">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Add Expense</h1>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Record a new expense to track your spending</p>
         </div>
 
       <Card>

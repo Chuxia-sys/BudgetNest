@@ -154,12 +154,12 @@ export default function GoalsPage() {
   if (!user) return null;
 
   return (
-    <div className="container px-4 sm:px-6 py-6 sm:py-8 space-y-6 sm:space-y-8">
+    <div className="container px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div className="text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl font-bold">Savings Goals</h1>
-          <p className="text-sm sm:text-base text-muted-foreground">Set and track your financial goals</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Savings Goals</h1>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Set and track your financial goals</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
@@ -288,7 +288,7 @@ export default function GoalsPage() {
 
       {/* Goals Grid */}
       {goals.length > 0 ? (
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
           {goals.map((goal) => {
             const percentage = (goal.currentAmount / goal.targetAmount) * 100;
             const daysRemaining = getDaysRemaining(goal.deadline);
