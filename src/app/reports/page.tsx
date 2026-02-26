@@ -182,12 +182,12 @@ export default function ReportsPage() {
   if (!user) return null;
 
   return (
-    <div className="container px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
+    <div className="container px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 py-4 sm:py-6 md:py-8 lg:py-10 space-y-6 sm:space-y-8 md:space-y-10">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div className="text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Reports & Analytics</h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Track your spending patterns and insights</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold">Reports & Analytics</h1>
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-2">Track your spending patterns and insights</p>
         </div>
         <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
           <Select value={selectedMonth} onValueChange={setSelectedMonth}>
@@ -215,45 +215,45 @@ export default function ReportsPage() {
       </div>
 
       {/* Summary Stats */}
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+            <CardTitle className="text-xs sm:text-sm font-medium">Total Spent</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{currencySymbol}{totalSpent.toFixed(2)}</div>
-            <p className="text-xs text-muted-foreground">
+          <CardContent className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <div className="text-2xl sm:text-3xl font-bold">{currencySymbol}{totalSpent.toFixed(2)}</div>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               {totalEntries} transactions this month
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Top Category</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+            <CardTitle className="text-xs sm:text-sm font-medium">Top Category</CardTitle>
+            <Calendar className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold capitalize">
+          <CardContent className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <div className="text-2xl sm:text-3xl font-bold capitalize truncate">
               {categoryData[0]?.name || 'None'}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               {currencySymbol}{categoryData[0]?.value.toFixed(2) || '0.00'}
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Average per Day</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+            <CardTitle className="text-xs sm:text-sm font-medium">Average per Day</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <div className="text-2xl sm:text-3xl font-bold">
               {currencySymbol}{totalEntries > 0 ? (totalSpent / totalEntries).toFixed(2) : '0.00'}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Per transaction
             </p>
           </CardContent>
@@ -262,11 +262,11 @@ export default function ReportsPage() {
 
       {/* Chart Tabs */}
       <Card>
-        <CardHeader>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <CardHeader className="px-4 sm:px-5 md:px-6 lg:px-8 pt-5 sm:pt-6 md:pt-7 lg:pt-8">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
             <div className="text-center sm:text-left">
-              <CardTitle>Spending Visualization</CardTitle>
-              <CardDescription>Visual breakdown of your expenses</CardDescription>
+              <CardTitle className="text-base sm:text-lg md:text-xl">Spending Visualization</CardTitle>
+              <CardDescription className="text-xs sm:text-sm mt-1">Visual breakdown of your expenses</CardDescription>
             </div>
             <div className="flex flex-wrap justify-center sm:justify-end gap-2">
               <Badge
@@ -293,8 +293,8 @@ export default function ReportsPage() {
             </div>
           </div>
         </CardHeader>
-        <CardContent>
-          <div className="h-[250px] sm:h-[300px]">
+        <CardContent className="px-4 sm:px-5 md:px-6 lg:px-8 pb-5 sm:pb-6 md:pb-7 lg:pb-8">
+          <div className="h-[300px] sm:h-[350px] md:h-[400px] lg:h-[450px]">
             {viewMode === 'category' && (
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
@@ -344,46 +344,46 @@ export default function ReportsPage() {
 
       {/* Expense History */}
       <Card>
-        <CardHeader>
-          <CardTitle>Expense History</CardTitle>
-          <CardDescription>
+        <CardHeader className="px-4 sm:px-5 md:px-6 lg:px-8 pt-5 sm:pt-6 md:pt-7 lg:pt-8">
+          <CardTitle className="text-base sm:text-lg md:text-xl">Expense History</CardTitle>
+          <CardDescription className="text-xs sm:text-sm mt-1">
             All transactions for {format(new Date(selectedMonth), 'MMMM yyyy')}
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="px-4 sm:px-5 md:px-6 lg:px-8 pb-5 sm:pb-6 md:pb-7 lg:pb-8">
           {monthlyExpenses.length > 0 ? (
-            <div className="space-y-3 max-h-[500px] overflow-y-auto">
+            <div className="space-y-3 sm:space-y-4 max-h-[500px] overflow-y-auto">
               {monthlyExpenses.map((expense) => {
                 const cat = categories.find(c => c.id === expense.category || c.name.toLowerCase() === expense.category.toLowerCase());
                 return (
                   <div
                     key={expense.id}
-                    className="flex items-center justify-between p-3 sm:p-4 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
+                    className="flex items-center justify-between p-3 sm:p-4 md:p-5 rounded-lg border bg-card hover:bg-accent/50 transition-colors"
                   >
-                    <div className="flex items-center gap-2 sm:gap-4 min-w-0 flex-1">
+                    <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
                       <div
-                        className="flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full text-lg sm:text-xl flex-shrink-0"
+                        className="flex h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 items-center justify-center rounded-full text-lg sm:text-xl md:text-2xl flex-shrink-0"
                         style={{ backgroundColor: cat?.color + '20' }}
                       >
                         {cat?.icon || '📦'}
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="font-medium capitalize text-sm sm:text-base truncate">{cat?.name || expense.category}</p>
+                        <p className="font-medium capitalize text-xs sm:text-sm md:text-base truncate">{cat?.name || expense.category}</p>
                         <p className="text-xs sm:text-sm text-muted-foreground">
                           {format(new Date(expense.date), 'MMM dd, yyyy')}
                           {expense.note && ` • ${expense.note}`}
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 sm:gap-4 ml-2 flex-shrink-0">
+                    <div className="flex items-center gap-2 sm:gap-3 ml-2 flex-shrink-0">
                       <div className="text-right">
-                        <p className="font-semibold text-red-500 text-sm sm:text-base">-{currencySymbol}{expense.amount.toFixed(2)}</p>
+                        <p className="font-semibold text-red-500 text-xs sm:text-sm md:text-base">-{currencySymbol}{expense.amount.toFixed(2)}</p>
                       </div>
                       <Button
                         variant="ghost"
                         size="icon"
                         onClick={() => deleteExpense(expense.id)}
-                        className="text-muted-foreground hover:text-destructive h-8 w-8 sm:h-9 sm:w-9"
+                        className="text-muted-foreground hover:text-destructive h-8 w-8 sm:h-9 sm:w-9 flex-shrink-0"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -393,10 +393,10 @@ export default function ReportsPage() {
               })}
             </div>
           ) : (
-            <div className="text-center py-12 text-muted-foreground">
-              <Calendar className="h-12 w-12 mx-auto mb-4 opacity-50" />
-              <p className="text-lg font-medium">No expenses this month</p>
-              <p className="text-sm mt-1">Add your first expense to start tracking</p>
+            <div className="text-center py-12 sm:py-16 text-muted-foreground">
+              <Calendar className="h-12 w-12 mx-auto mb-3 opacity-50" />
+              <p className="text-base sm:text-lg font-medium">No expenses this month</p>
+              <p className="text-xs sm:text-sm mt-1">Add your first expense to start tracking</p>
               <Button className="mt-4" onClick={() => router.push('/add-expense')}>
                 Add Expense
               </Button>

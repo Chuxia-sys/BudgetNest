@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { db } from '@/lib/firebase';
+import { db, isFirebaseConfigAvailable } from '@/lib/firebase';
 import {
   collection,
   addDoc,
@@ -25,6 +25,11 @@ const DEFAULT_CATEGORIES: Category[] = [
 // GET - Fetch all categories for a user
 export async function GET(request: NextRequest) {
   try {
+    // Return default categories if Firebase is not configured
+    if (!isFirebaseConfigAvailable()) {
+      return NextResponse.json({ categories: DEFAULT_CATEGORIES });
+    }
+
     const searchParams = request.nextUrl.searchParams;
     const uid = searchParams.get('uid');
 
@@ -54,6 +59,14 @@ export async function GET(request: NextRequest) {
 // POST - Add a new custom category
 export async function POST(request: NextRequest) {
   try {
+    // Return error if Firebase is not configured
+    if (!isFirebaseConfigAvailable()) {
+      return NextResponse.json(
+        { error: 'Firebase not configured. Please add your Firebase credentials.' },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     const { uid, name, color, icon } = body;
 
@@ -88,6 +101,14 @@ export async function POST(request: NextRequest) {
 // PUT - Update a category
 export async function PUT(request: NextRequest) {
   try {
+    // Return error if Firebase is not configured
+    if (!isFirebaseConfigAvailable()) {
+      return NextResponse.json(
+        { error: 'Firebase not configured. Please add your Firebase credentials.' },
+        { status: 503 }
+      );
+    }
+
     const body = await request.json();
     const { uid, categoryId, name, color, icon } = body;
 
@@ -128,6 +149,14 @@ export async function PUT(request: NextRequest) {
 // DELETE - Delete a custom category
 export async function DELETE(request: NextRequest) {
   try {
+    // Return error if Firebase is not configured
+    if (!isFirebaseConfigAvailable()) {
+      return NextResponse.json(
+        { error: 'Firebase not configured. Please add your Firebase credentials.' },
+        { status: 503 }
+      );
+    }
+
     const searchParams = request.nextUrl.searchParams;
     const uid = searchParams.get('uid');
     const categoryId = searchParams.get('categoryId');
