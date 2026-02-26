@@ -196,37 +196,38 @@ export default function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 max-w-6xl">
-        <div className="mb-6 sm:mb-8">
+      <div className="container mx-auto px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 py-4 sm:py-6 md:py-8 lg:py-10 max-w-6xl">
+        <div className="mb-6 sm:mb-8 md:mb-10">
           <Link href="/">
             <Button variant="ghost" size="sm" className="mb-3 sm:mb-4">
               <ArrowLeft className="h-4 w-4 mr-2" />
               Back to Dashboard
             </Button>
           </Link>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Manage Categories</h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1 sm:mt-2">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold">Manage Categories</h1>
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-2">
             Add, edit, and manage your expense categories
           </p>
         </div>
 
         <Card>
-          <CardHeader>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <CardHeader className="px-4 sm:px-5 md:px-6 lg:px-8 pt-5 sm:pt-6 md:pt-7 lg:pt-8">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
               <div>
-                <CardTitle>Categories</CardTitle>
-                <CardDescription>
+                <CardTitle className="text-base sm:text-lg md:text-xl">Categories</CardTitle>
+                <CardDescription className="text-xs sm:text-sm mt-1">
                   {!loading && `Total: ${categories.length} categories`}
                   {loading && 'Loading your categories...'}
                 </CardDescription>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 w-full sm:w-auto">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => fetchCategories()}
                   disabled={loading}
                   title="Refresh categories"
+                  className="flex-1 sm:flex-none"
                 >
                   <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
                 </Button>
@@ -235,9 +236,10 @@ export default function CategoriesPage() {
                   if (!open) resetForm();
                 }}>
                   <DialogTrigger asChild>
-                    <Button onClick={openAddDialog} className="w-full sm:w-auto">
+                    <Button onClick={openAddDialog} className="flex-1 sm:flex-none">
                       <Plus className="h-4 w-4 mr-2" />
-                      Add Category
+                      <span className="hidden sm:inline">Add Category</span>
+                      <span className="sm:hidden">Add</span>
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="max-w-[95vw] sm:max-w-md">
@@ -319,36 +321,36 @@ export default function CategoriesPage() {
               </div>
             </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="px-4 sm:px-5 md:px-6 lg:px-8 pb-5 sm:pb-6 md:pb-7 lg:pb-8">
             {loading ? (
-              <div className="text-center py-12">
+              <div className="text-center py-12 sm:py-16">
                 <div className="inline-block">
                   <Loader2 className="h-8 w-8 animate-spin text-primary mx-auto mb-3" />
                 </div>
-                <p className="text-muted-foreground">Loading categories...</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">Loading categories...</p>
               </div>
             ) : categories.length === 0 ? (
-              <div className="text-center py-12">
-                <div className="text-6xl mb-4">📁</div>
-                <p className="text-lg font-medium mb-2">No categories yet</p>
-                <p className="text-sm text-muted-foreground mb-4">
+              <div className="text-center py-12 sm:py-16 md:py-20">
+                <div className="text-5xl sm:text-6xl mb-4">📁</div>
+                <p className="text-base sm:text-lg font-medium mb-2">No categories yet</p>
+                <p className="text-xs sm:text-sm text-muted-foreground mb-4">
                   Start by adding your first expense category
                 </p>
-                <Button onClick={openAddDialog}>
+                <Button onClick={openAddDialog} className="h-10">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Your First Category
                 </Button>
               </div>
             ) : (
-              <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-3 sm:gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                 {categories.map((category) => (
                   <Card
                     key={category.id}
-                    className="flex flex-col xs:flex-row items-start xs:items-center justify-between p-3 sm:p-4 hover:shadow-md transition-shadow gap-3 xs:gap-0"
+                    className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 sm:p-5 md:p-6 hover:shadow-md transition-shadow gap-3 sm:gap-0"
                     style={{ borderLeft: `4px solid ${category.color}` }}
                   >
-                    <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
-                      <span className="text-xl sm:text-2xl flex-shrink-0">{category.icon}</span>
+                    <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                      <span className="text-2xl sm:text-3xl flex-shrink-0">{category.icon}</span>
                       <div className="min-w-0">
                         <p className="font-medium truncate text-sm sm:text-base">{category.name}</p>
                         {isDefaultCategory(category.id) && (
@@ -356,7 +358,7 @@ export default function CategoriesPage() {
                         )}
                       </div>
                     </div>
-                    <div className="flex gap-1 flex-shrink-0 w-full xs:w-auto justify-end">
+                    <div className="flex gap-1 flex-shrink-0 w-full sm:w-auto justify-end">
                       {!isDefaultCategory(category.id) && (
                         <>
                           <Button

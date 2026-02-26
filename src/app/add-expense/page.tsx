@@ -129,20 +129,20 @@ export default function AddExpensePage() {
   const selectedCategoryObj = categories.find(c => c.id === selectedCategory);
 
   return (
-    <div className="container px-4 sm:px-6 md:px-8 py-6 sm:py-8 md:py-10">
+    <div className="container px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 py-4 sm:py-6 md:py-8 lg:py-10">
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 sm:mb-8 md:mb-10 text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Add Expense</h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Record a new expense to track your spending</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold">Add Expense</h1>
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-2">Record a new expense to track your spending</p>
         </div>
 
       <Card>
-        <CardHeader>
-          <CardTitle className="text-lg sm:text-xl">Expense Details</CardTitle>
-          <CardDescription className="text-sm">Fill in the information below to add a new expense</CardDescription>
+        <CardHeader className="px-4 sm:px-5 md:px-6 pt-5 sm:pt-6 md:pt-7">
+          <CardTitle className="text-base sm:text-lg md:text-xl">Expense Details</CardTitle>
+          <CardDescription className="text-xs sm:text-sm mt-1">Fill in the information below to add a new expense</CardDescription>
         </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-6">
+        <CardContent className="px-4 sm:px-5 md:px-6 pb-5 sm:pb-6 md:pb-7">
+          <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
             {/* Amount */}
             <div className="space-y-2">
               <Label htmlFor="amount">Amount *</Label>
@@ -240,10 +240,10 @@ export default function AddExpensePage() {
             </div>
 
             {/* Submit Button */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 pt-2">
               <Button
                 type="submit"
-                className="flex-1"
+                className="flex-1 h-10"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
@@ -263,7 +263,7 @@ export default function AddExpensePage() {
                 variant="outline"
                 onClick={() => router.push('/')}
                 disabled={isSubmitting}
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto h-10"
               >
                 Cancel
               </Button>
@@ -273,18 +273,18 @@ export default function AddExpensePage() {
       </Card>
 
       {/* Quick Add Section */}
-      <div className="mt-6">
-        <h3 className="text-lg font-semibold mb-3">Quick Add</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+      <div className="mt-8 sm:mt-10">
+        <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Add</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
           {categories.slice(0, 4).map((category) => (
             <Button
               key={category.id}
               variant="outline"
-              className="h-auto flex-col gap-2 py-3 sm:py-4 px-2"
+              className="h-auto flex-col gap-2 py-4 sm:py-5 px-2 sm:px-3"
               onClick={() => setSelectedCategory(category.id)}
             >
-              <span className="text-2xl">{category.icon}</span>
-              <span className="text-xs sm:text-sm text-center">{category.name}</span>
+              <span className="text-2xl sm:text-3xl">{category.icon}</span>
+              <span className="text-xs sm:text-sm text-center line-clamp-2">{category.name}</span>
             </Button>
           ))}
         </div>

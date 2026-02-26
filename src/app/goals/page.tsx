@@ -154,16 +154,16 @@ export default function GoalsPage() {
   if (!user) return null;
 
   return (
-    <div className="container px-4 sm:px-6 md:px-8 lg:px-10 py-6 sm:py-8 md:py-10 space-y-6 sm:space-y-8 md:space-y-10">
+    <div className="container px-4 sm:px-5 md:px-6 lg:px-8 xl:px-10 py-4 sm:py-6 md:py-8 lg:py-10 space-y-6 sm:space-y-8 md:space-y-10">
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-6">
         <div className="text-center sm:text-left">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">Savings Goals</h1>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mt-1">Set and track your financial goals</p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl font-bold">Savings Goals</h1>
+          <p className="text-xs sm:text-sm md:text-base text-muted-foreground mt-2">Set and track your financial goals</p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto h-10">
               <Plus className="mr-2 h-4 w-4" />
               Add Goal
             </Button>
@@ -239,45 +239,45 @@ export default function GoalsPage() {
       </div>
 
       {/* Summary Stats */}
-      <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
+      <div className="grid gap-3 sm:gap-4 md:gap-5 grid-cols-1 sm:grid-cols-3">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Active Goals</CardTitle>
-            <Target className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+            <CardTitle className="text-xs sm:text-sm font-medium">Active Goals</CardTitle>
+            <Target className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{goals.length}</div>
-            <p className="text-xs text-muted-foreground">
+          <CardContent className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <div className="text-2xl sm:text-3xl font-bold">{goals.length}</div>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Total goals
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Target</CardTitle>
-            <CircleDollarSign className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+            <CardTitle className="text-xs sm:text-sm font-medium">Total Target</CardTitle>
+            <CircleDollarSign className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <div className="text-2xl sm:text-3xl font-bold truncate">
               ₱{goals.reduce((sum, g) => sum + g.targetAmount, 0).toFixed(2)}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               Across all goals
             </p>
           </CardContent>
         </Card>
 
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Total Saved</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+            <CardTitle className="text-xs sm:text-sm font-medium">Total Saved</CardTitle>
+            <TrendingUp className="h-4 w-4 text-muted-foreground flex-shrink-0" />
           </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">
+          <CardContent className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <div className="text-2xl sm:text-3xl font-bold truncate">
               ₱{goals.reduce((sum, g) => sum + g.currentAmount, 0).toFixed(2)}
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
               {goals.length > 0
                 ? `${((goals.reduce((sum, g) => sum + g.currentAmount, 0) / goals.reduce((sum, g) => sum + g.targetAmount, 0)) * 100).toFixed(0)}% complete`
                 : 'No goals yet'}
@@ -288,7 +288,7 @@ export default function GoalsPage() {
 
       {/* Goals Grid */}
       {goals.length > 0 ? (
-        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-5 sm:gap-6 md:gap-7 lg:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {goals.map((goal) => {
             const percentage = (goal.currentAmount / goal.targetAmount) * 100;
             const daysRemaining = getDaysRemaining(goal.deadline);
@@ -296,11 +296,11 @@ export default function GoalsPage() {
 
             return (
               <Card key={goal.id} className={isOverdue ? 'border-red-200 dark:border-red-900' : ''}>
-                <CardHeader className="pb-4">
-                  <div className="flex items-start justify-between gap-2">
+                <CardHeader className="pb-4 px-4 sm:px-5 md:px-6 pt-4 sm:pt-5 md:pt-6">
+                  <div className="flex items-start justify-between gap-3">
                     <div className="flex-1 min-w-0">
-                      <CardTitle className="text-lg sm:text-xl truncate">{goal.title}</CardTitle>
-                      <CardDescription className="mt-1">
+                      <CardTitle className="text-base sm:text-lg md:text-xl truncate">{goal.title}</CardTitle>
+                      <CardDescription className="text-xs sm:text-sm mt-2">
                         Target: {currencySymbol}{goal.targetAmount.toFixed(2)}
                       </CardDescription>
                     </div>
@@ -314,7 +314,7 @@ export default function GoalsPage() {
                     </Button>
                   </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
                   {/* Progress */}
                   <div className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
@@ -385,13 +385,13 @@ export default function GoalsPage() {
         </div>
       ) : (
         <Card>
-          <CardContent className="flex flex-col items-center justify-center py-16">
-            <Target className="h-16 w-16 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No savings goals yet</h3>
-            <p className="text-muted-foreground text-center max-w-md mb-6">
+          <CardContent className="flex flex-col items-center justify-center py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+            <Target className="h-14 sm:h-16 md:h-20 w-14 sm:w-16 md:w-20 text-muted-foreground mb-4 sm:mb-6" />
+            <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-2 text-center">No savings goals yet</h3>
+            <p className="text-xs sm:text-sm text-muted-foreground text-center max-w-md mb-6">
               Create your first savings goal to start tracking your progress towards financial freedom.
             </p>
-            <Button onClick={() => setIsDialogOpen(true)}>
+            <Button onClick={() => setIsDialogOpen(true)} className="h-10">
               <Plus className="mr-2 h-4 w-4" />
               Create Your First Goal
             </Button>
